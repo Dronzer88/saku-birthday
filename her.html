@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday, SAKKU!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-width: 700px;
+      text-align: center;
+      overflow-y: auto;
+    }
+
+    h1 {
+      color: #e91e63;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #e91e63;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .question {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .question p {
+      font-size: 1.2em;
+    }
+
+    .question button {
+      display: block;
+      margin: 10px auto;
+      width: 70%;
+    }
+
+    .cake {
+      font-size: 5em;
+      cursor: pointer;
+      display: none;
+      margin: 20px 0;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .message {
+      display: none;
+      font-size: 1.2em;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .message img {
+  max-width: 300px;
+  height: auto;
+  margin: 20px auto 0 auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+    
+  </style>
+</head>
+<body>
+
+<div class="container" id="main">
+  <h1>🎉 Happy Birthday, SAKKU! 🎂</h1>
+  <p>Ready for a little surprise? 🎁 Click below to start!</p>
+  <button onclick="start()">Start</button>
+
+  <div class="question" id="q1">
+    <p>What do you think is my favorite thing about you?</p>
+    <button onclick="nextQuestion('q1', 'q2')">Your kindness 💖</button>
+    <button onclick="nextQuestion('q1', 'q2')">Your smile 😊</button>
+    <button onclick="nextQuestion('q1', 'q2')">How you care for others 🫶</button>
+  </div>
+
+  <div class="question" id="q2">
+    <p>Guess what I wish for you this year?</p>
+    <button onclick="nextQuestion('q2', 'cake')">Endless joy 🌈</button>
+    <button onclick="nextQuestion('q2', 'cake')">Dreams coming true ✨</button>
+    <button onclick="nextQuestion('q2', 'cake')">Big hugs and love 🥰</button>
+  </div>
+
+  <div class="cake" id="cake" onclick="showMessage()">🎂</div>
+
+  <div class="message" id="message">
+    💌 A little note for you:<br><br>
+    I know this past year hasn’t always been smooth for us — there have been ups and downs, moments of distance and silence.
+    But one thing I’ve never stopped holding onto is your incredible spirit — that fierce, beautiful part of you that never gives up.
+    Not on me, not on your dreams, and not on the people you care about.
+
+    <br><br>Please, never let go of that.
+
+    <br><br>No matter how tough life gets, keep wearing that sweet little smile — the one that lights up your whole sunshine face. ☀️
+    You are someone’s dream girl, someone’s safe place, someone’s reason to believe in good things.
+
+    <br><br>Thank you for being you — unapologetically, wonderfully you. 💖 💫
+
+    <br><br>Love always,<br>
+    [VEDANT] 💕
+    
+    <br><br>
+    <img src="C:\Users\VEDANT\.vscode\her\Screenshot 2025-04-23 225548.png" alt="You and her">
+  </div>
+</div>
+
+<script>
+  window.onload = function () {
+    document.getElementById('main').style.display = 'block';
+  }
+
+  function start() {
+    document.querySelector('button').style.display = 'none';
+    document.getElementById('q1').style.display = 'block';
+  }
+
+  function nextQuestion(current, next) {
+    document.getElementById(current).style.display = 'none';
+    if (next === 'cake') {
+      document.getElementById('cake').style.display = 'block';
+    } else {
+      document.getElementById(next).style.display = 'block';
+    }
+  }
+
+  function showMessage() {
+    document.getElementById('cake').style.display = 'none';
+    document.getElementById('message').style.display = 'block';
+    confetti();
+  }
+
+  function confetti() {
+    for (let i = 0; i < 100; i++) {
+      let div = document.createElement('div');
+      div.style.position = 'fixed';
+      div.style.width = '10px';
+      div.style.height = '10px';
+      div.style.borderRadius = '50%';
+      div.style.backgroundColor = `hsl(${Math.random()*360}, 70%, 60%)`;
+      div.style.left = Math.random() * window.innerWidth + 'px';
+      div.style.top = '-20px';
+      div.style.opacity = '0.8';
+      div.style.transition = 'top 3s ease-in';
+      document.body.appendChild(div);
+      setTimeout(() => {
+        div.style.top = window.innerHeight + 'px';
+      }, 100);
+      setTimeout(() => {
+        div.remove();
+      }, 4000);
+    }
+  }
+</script>
+
+</body>
+</html>
